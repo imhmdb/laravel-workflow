@@ -66,6 +66,19 @@ class WorkflowRegistry
     {
         return $this->registry->get($subject, $workflowName);
     }
+    
+      /**
+     * Return all workflows for the given $subject
+     *
+     * @param  object $subject
+     * @return Workflow[]
+     */
+    public function all($subject): array
+    {
+        return $this->registry->all($subject);
+    }
+    
+    
 
     /**
      * Add a workflow to the subject
@@ -75,7 +88,7 @@ class WorkflowRegistry
      */
     public function add(Workflow $workflow, $supportStrategy)
     {
-        $this->registry->add($workflow, new ClassInstanceSupportStrategy($supportStrategy));
+        $this->registry->addWorkflow($workflow, new ClassInstanceSupportStrategy($supportStrategy));
     }
 
     /**
